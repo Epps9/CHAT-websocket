@@ -1,0 +1,14 @@
+{
+  "name": "CHAT-websocket",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Epps9/CHAT-websocket.git",
+  "author": "Ewa Witkowska <ewa.witkowska09@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "4.17.1"
+  }
+}
