@@ -5,9 +5,12 @@ const socket = require('socket.io');
 
 const messages = [];
 
+app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
+
 app.use(express.static(path.join(__dirname, '/client')));
 app.get('*', (req, res) => {
-    res.render(path.join(__dirname, '/client/index.html'));
+    res.render(path.join(__dirname, 'index'));
 });  
 
 const server = app.listen(8000, () => {
