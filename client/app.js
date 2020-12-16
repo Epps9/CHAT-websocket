@@ -7,7 +7,15 @@ const messageContentInput = document.getElementById('message-content');
 var userName = '';
 const socket = io();
 
-socket.on('message', ({ author, content }) => addMessage(author, content))
+socket.on('message', ({ author, content }) => addMessage(author, content));
+
+socket.on('loggedUser', (newUser) => {addMessage('Chat bot', `${newUser.author} has joined the conversation!`)
+//console.log('kim jest user', newUser)
+})
+
+socket.on('loggedOutUser', (user) => {addMessage('Chat bot', `${user} has left the conversation :( `) ;
+console.log ('kim jest user', user);
+})
 
 const login = function (event) {
     event.preventDefault();
@@ -17,6 +25,7 @@ const login = function (event) {
       userName = userNameInput.value;
       loginForm.classList.remove('show');
       messagesSection.classList.add('show');
+      socket.emit('newUser', {author: userName, id: socket.id} )
     }
   };
 
