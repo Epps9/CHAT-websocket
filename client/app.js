@@ -10,11 +10,11 @@ const socket = io();
 socket.on('message', ({ author, content }) => addMessage(author, content));
 
 socket.on('loggedUser', (newUser) => {addMessage('Chat bot', `${newUser.author} has joined the conversation!`)
-//console.log('kim jest user', newUser)
+console.log('kim jest user', newUser)
 })
 
-socket.on('loggedOutUser', (user) => {addMessage('Chat bot', `${user} has left the conversation :( `) ;
-console.log ('kim jest user', user);
+socket.on('loggedOutUser', (loggedOutUser) => {addMessage('Chat bot', `${loggedOutUser.author} has left the conversation :( `) ;
+console.log ('kim jest user', loggedOutUser);
 })
 
 const login = function (event) {

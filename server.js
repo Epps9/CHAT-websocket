@@ -32,10 +32,12 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('message', message);
     });   
     socket.on('disconnect', (user) => { console.log('Oh, socket ' + socket.id + ' has left');
-    console.log('uzytkownik wychodzący', user)
-    socket.broadcast.emit('loggedOutUser', user);
+    const loggedOutUser = users.find((user) => user.id === socket.id)
+    socket.broadcast.emit('loggedOutUser', loggedOutUser);
     users = users.filter((user) => user.id !== socket.id);
     });
     console.log('I\'ve added a listener on message and disconnect events \n');
   });
   
+
+
